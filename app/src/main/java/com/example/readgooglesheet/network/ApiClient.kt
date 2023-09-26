@@ -1,6 +1,6 @@
 package com.example.readgooglesheet.network
 
-import com.example.readgooglesheet.url
+import com.example.readgooglesheet.helper.url
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
