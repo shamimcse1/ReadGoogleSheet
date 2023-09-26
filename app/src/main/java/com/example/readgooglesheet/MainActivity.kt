@@ -25,8 +25,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+
+        Log.d("SimpleActivity","OnCreate Started")
         setContentView(R.layout.activity_main)
 
         textView = findViewById(R.id.textView)
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
 
         viewModel.data.observe(this, Observer {data->
-            MyApplication.getMyApplicationInstance().sharedPreferences.clearSharedPreference()
+
             data?.data?.values?.forEach { it ->
                 it?.get(1)?.get(1)
                 Log.d("test", it?.get(1).toString())
@@ -78,6 +79,11 @@ class MainActivity : AppCompatActivity() {
         val mData = MyApplication.getMyApplicationInstance().sharedPreferences.getData("key", "")
         textView.text = mData
         Log.d("test", "Response is: $mData")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("SimpleActivity","onDestroy")
     }
 
 }

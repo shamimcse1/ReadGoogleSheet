@@ -1,7 +1,9 @@
 package com.example.readgooglesheet.network
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.readgooglesheet.MyApplication
 import com.example.readgooglesheet.model.DataModel
 import com.example.readgooglesheet.model.DataResource
 
@@ -26,7 +28,9 @@ class Repository {
                 response: retrofit2.Response<DataModel?>
             ) {
                 if (response.isSuccessful) {
-                    _getResponse.setValue(DataResource.success(response.body()!!))
+                    MyApplication.getMyApplicationInstance().sharedPreferences.clearSharedPreference()
+                    _getResponse.value = DataResource.success(response.body()!!)
+                    Log.d("SimpleActivity","Hello Started")
                 } else {
                     _getResponse.setValue(DataResource.error(response.message()))
                 }
