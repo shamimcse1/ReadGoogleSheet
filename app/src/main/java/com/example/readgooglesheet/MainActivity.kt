@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.readgooglesheet.helper.KEY
 import com.example.readgooglesheet.helper.MyApplication
 import com.example.readgooglesheet.view_model.DataViewModel
 
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        val mData = MyApplication.getMyApplicationInstance().sharedPreferences.getData("key", "")
+        val mData = MyApplication.getMyApplicationInstance().sharedPreferences.getData(KEY, "")
 
         Log.d("SimpleActivity", "sharedPreferences is: $mData")
     }

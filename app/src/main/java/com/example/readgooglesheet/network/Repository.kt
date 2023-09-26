@@ -3,6 +3,7 @@ package com.example.readgooglesheet.network
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.readgooglesheet.helper.KEY
 import com.example.readgooglesheet.helper.MyApplication
 import com.example.readgooglesheet.model.DataModel
 import com.example.readgooglesheet.model.DataResource
@@ -31,10 +32,10 @@ class Repository {
                     MyApplication.getMyApplicationInstance().sharedPreferences.clearSharedPreference()
                     _getResponse.value = DataResource.success(response.body()!!)
                     response.body()?.values?.forEach {
-                        it?.get(1)?.get(1)
+
                         Log.d("test", it?.get(1).toString())
                         MyApplication.getMyApplicationInstance().sharedPreferences.setData(
-                            "key",
+                            KEY,
                             it?.get(1).toString())
                     }
                     Log.d("SimpleActivity","Main Data")
